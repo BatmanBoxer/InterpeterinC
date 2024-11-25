@@ -1,0 +1,4 @@
+fun darwin(){ 
+  var i:int = 123;
+  print(i);
+}
