@@ -32,5 +32,6 @@ void readFile(char *file_location, char **text_in_file,ulong* buffer_size) {
   fclose(file);
 
   printf("Reading File Sucess\n");
+  printf("-----------------------------------------\n");
 }
 
