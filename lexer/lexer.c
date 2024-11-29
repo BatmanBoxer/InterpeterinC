@@ -24,11 +24,11 @@ Token *tokenize(char *texts) {
   tokens[0].value = "batman";
   tokens[0].tokenType = STRING;
 
-  char buff[256] = {0}; // Initialize buffer to zero
+  char buff[256];
   int buff_counter = 0;
 
   while (peak(0) != NULL) {
-    // Reallocating tokens array if necessary
+    // Reallocating tokens array cause no mutable array
     if (size_of_tokens <= token_count) {
       size_of_tokens *= 2;
       Token *temp = realloc(tokens, sizeof(Token) * size_of_tokens);
@@ -44,17 +44,17 @@ Token *tokenize(char *texts) {
       char ch = *consume();
       buff[buff_counter] = ch;
       buff_counter++;
+      while (isalnum(*peak(0))) {
+        ch = *consume();
+        buff[buff_counter] = ch;
+        buff_counter++;
+      }
     } else {
       consume();
     }
   }
-  buff[buff_counter] = '\0';
-  printf("%s\n",buff);
-  if (strcmp("fundarwinvariintprinti",buff) == 0) {
-    printf("true");
-  } else {
-    printf("flase");
-  }
+  buff[buff_counter]='\0';
+  printf("%s\n", buff);
   return tokens;
 }
 
