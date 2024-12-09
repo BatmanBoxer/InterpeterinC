@@ -25,6 +25,7 @@ typedef enum {
   LEFTBRACKET,
   RIGHTBRACKET,
   SEMICOLON,
+  DOUBLEQUOTES,
 
   PLUS,
   MINUS,
@@ -34,9 +35,12 @@ typedef enum {
   GREATER,
   SMALLER,
   EQUALS,
+  NOT,
 
   INDENTIFIER,
   TOKEN_EOF,
+  PRINT,
+  PRINTLN,
 } TokenType;
 typedef struct {
   TokenType tokenType;

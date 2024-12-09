@@ -4,7 +4,7 @@
 #include <string.h>
 #include <sys/types.h>
 
-void readFile(char *file_location, char **text_in_file,ulong* buffer_size) {
+void readFile(char *file_location, char **text_in_file,unsigned long* buffer_size) {
 
   printf("Reading File...\n");
 
@@ -32,6 +32,6 @@ void readFile(char *file_location, char **text_in_file,ulong* buffer_size) {
   fclose(file);
 
   printf("Reading File Sucess\n");
-  printf("-----------------------------------------\n");
+  printf("-----------------------------------------------------------------\n");
 }
 
