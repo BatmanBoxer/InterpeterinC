@@ -1,4 +1,4 @@
 fun darwin(){ 
-  var i:int = a123;
+  var i:int = 123;
   print(i);
 }

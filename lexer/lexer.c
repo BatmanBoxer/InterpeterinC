@@ -1,4 +1,3 @@
-
 #include "tokens.h"
 #include <ctype.h>
 #include <stdio.h>
@@ -13,7 +12,6 @@ char *peak(int i);
 char *consume();
 
 Token *tokenize(char *texts) {
-
 
   global_texts = texts;
   printf("Tokenizing...\n");
@@ -81,13 +79,13 @@ Token *tokenize(char *texts) {
       } else if (strcmp(buff, "for")== 0) {
         tokens[token_count].tokenType = FOR;
       } else {
-        tokens[token_count].tokenType = STRING;
+        tokens[token_count].tokenType = STRINGLIT;
         tokens[token_count].value = malloc(sizeof(strlen(buff)+1));
         tokens[token_count].value[0] = '\0';
         strcat(tokens[token_count].value, buff);
       }
       buff_counter = 0;
-      token_count = token_count + 1;
+      token_count++;
     } else if (*peak(0) == ' ' || *peak(0) == '\n') {
       consume();
       continue;
@@ -100,11 +98,13 @@ Token *tokenize(char *texts) {
 
       buff[buff_counter] = '\0';
 
-      tokens[token_count].tokenType = INT;
+      tokens[token_count].tokenType = INTLIT;
+      tokens[token_count].value = malloc(sizeof(strlen(buff)+1));
+      tokens[token_count].value[0] = '\0';
       strcat(tokens[token_count].value, buff);
       buff_counter = 0;
-
-    } else if (*peak(0) == '"') {
+      token_count++;
+}	else if (*peak(0) == '"') {
       consume();
       tokens[token_count].tokenType = DOUBLEQUOTES;
       token_count++;
@@ -163,9 +163,14 @@ Token *tokenize(char *texts) {
       tokens[token_count].tokenType = NOT;
       token_count++;
 
-    } else {
-      printf("reached here ");
+    }else if (*peak(0) == ':') {
       consume();
+      tokens[token_count].tokenType =COLON;
+      token_count++;
+
+    } else {
+      printf("reached here: ");
+      printf("%c\n",*consume());
       continue;
     }
   }
@@ -191,4 +196,3 @@ char *consume() {
   texts_count++;
   return temp;
 }
-

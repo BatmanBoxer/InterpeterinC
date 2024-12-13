@@ -14,16 +14,21 @@ typedef enum {
   BREAK,
   CONTINUE,
   FUN,
-
+  // add this to lexer later on darwin
   INT,
   STRING,
   BOOL,
   ARRAY,
+  STRINGLIT,
+  INTLIT,
+  TRUE,
+  FALSE,
 
   LEFTPARAMS,
   RIGHTPARAMS,
   LEFTBRACKET,
   RIGHTBRACKET,
+  COLON,
   SEMICOLON,
   DOUBLEQUOTES,
 
